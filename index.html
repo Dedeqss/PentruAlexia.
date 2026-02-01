@@ -25,33 +25,33 @@
     .start-screen {
       position:relative;
       z-index:10;
-      animation:fadeInTitle 4s ease-out forwards;
+      animation:fadeInTitle 3.5s ease-out forwards;
       opacity:0;
     }
     @keyframes fadeInTitle {
-      0% { opacity:0; transform:translateY(60px) scale(0.9); }
+      0% { opacity:0; transform:translateY(60px) scale(0.92); }
       100% { opacity:1; transform:translateY(0) scale(1); }
     }
     .title-start {
       font-family:'Pinyon Script',cursive;
-      font-size:6.5rem;
+      font-size:7rem;
       color:#f3e8ff;
-      text-shadow:0 10px 30px rgba(124,58,237,0.9),0 0 60px rgba(167,139,250,0.6);
-      margin-bottom:40px;
-      animation:glowPulse 6s infinite alternate;
-      letter-spacing:3px;
+      text-shadow:0 12px 35px rgba(124,58,237,0.95),0 0 70px rgba(167,139,250,0.7);
+      margin-bottom:50px;
+      animation:glowPulse 5.5s infinite alternate;
+      letter-spacing:4px;
     }
     @keyframes glowPulse {
-      from { text-shadow:0 0 25px #c084fc,0 0 50px #a855f7,0 0 80px #7c3aed; }
-      to   { text-shadow:0 0 50px #c084fc,0 0 100px #a855f7,0 0 150px #7c3aed; }
+      from { text-shadow:0 0 30px #c084fc,0 0 60px #a855f7,0 0 90px #7c3aed; }
+      to   { text-shadow:0 0 60px #c084fc,0 0 120px #a855f7,0 0 180px #7c3aed; }
     }
     .subtitle-start {
       font-family:'Parisienne',cursive;
-      font-size:3.2rem;
+      font-size:3.5rem;
       color:#e9d5ff;
-      margin:30px 0 70px;
-      opacity:0.92;
-      text-shadow:0 5px 15px rgba(124,58,237,0.7);
+      margin:40px 0 80px;
+      opacity:0.94;
+      text-shadow:0 6px 18px rgba(124,58,237,0.8);
     }
     .card {
       background:rgba(30,10,60,0.75);
@@ -199,12 +199,12 @@
       }
     }
     @media (max-width:480px) {
-      .title-start { font-size:4.8rem; }
-      .subtitle-start { font-size:2.6rem; }
-      .title { font-size:4.5rem; }
-      .big   { font-size:4rem; }
-      p      { font-size:1.25rem; }
-      button { font-size:1.8rem; padding:16px 55px; }
+      .title-start { font-size:5rem; }
+      .subtitle-start { font-size:2.8rem; }
+      .title { font-size:4.8rem; }
+      .big   { font-size:4.2rem; }
+      p      { font-size:1.3rem; }
+      button { font-size:1.9rem; padding:18px 60px; }
     }
   </style>
 </head>
@@ -250,10 +250,10 @@
   </div>
 
   <script>
-    // Titlul introductiv apare singur 2.5 secunde, apoi dispare și începe cardul
+    // Titlul intro apare singur 2.5 secunde, apoi dispare și începe cardul + textul tău
     setTimeout(() => {
       document.querySelector('.start-screen').style.opacity = '0';
-      document.querySelector('.start-screen').style.transition = 'opacity 2.5s ease';
+      document.querySelector('.start-screen').style.transition = 'opacity 2.8s ease';
       setTimeout(() => {
         document.querySelector('.start-screen').style.display = 'none';
         const card = document.getElementById('card');
@@ -261,9 +261,9 @@
 
         const paragraphs = document.querySelectorAll('#card p');
         paragraphs.forEach((p, i) => {
-          setTimeout(() => p.classList.add('visible'), i * 480 + 1000);
+          setTimeout(() => p.classList.add('visible'), i * 480 + 1200);
         });
-      }, 2200);
+      }, 2500);
     }, 2500);
 
     let scale = 1;
