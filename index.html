@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Pentru Alexia de la Florin. </title>
+  <title>Pentru Alexia mea adorată 💜</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Pinyon+Script&family=Caveat:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -179,25 +179,28 @@
       0%,100% { transform: translateY(0) rotate(0deg); }
       50%     { transform: translateY(-40px) rotate(10deg); }
     }
-    .heart, .teddy-emoji {
+    .falling-item {
       position: absolute;
       pointer-events: none;
-      animation: fall 12s linear infinite;
+      animation: smoothFall linear infinite;
       z-index: 5;
-      opacity: 0.45; /* mai transparent, cum ai cerut */
+      will-change: transform, opacity;
     }
-    .heart {
-      font-size: 2.6rem;
-      color: #d946ef;
-      text-shadow: 0 0 18px rgba(217,70,239,0.8);
-    }
-    .teddy-emoji {
-      font-size: 3.2rem;
-      animation-duration: 14s; /* mai lent pentru drăgălășenie */
-    }
-    @keyframes fall {
-      0%   { transform: translateY(-25vh) rotate(0deg) translateX(0); opacity: 0.45; }
-      100% { transform: translateY(125vh) rotate(1080deg) translateX(60vw); opacity: 0; }
+    @keyframes smoothFall {
+      0% {
+        transform: translateY(-30vh) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: var(--item-opacity);
+      }
+      90% {
+        opacity: var(--item-opacity);
+      }
+      100% {
+        transform: translateY(130vh) rotate(var(--rotate-end)) translateX(var(--drift));
+        opacity: 0;
+      }
     }
     @media (max-width: 480px) {
       .title-start { font-size: 4.8rem; }
@@ -251,7 +254,7 @@
   </div>
 
   <script>
-    // Reveal după 2 secunde (fără buton, doar titlu introductiv frumos)
+    // Reveal după 2 secunde
     setTimeout(() => {
       document.querySelector('.start-screen').style.opacity = '0';
       document.querySelector('.start-screen').style.transition = 'opacity 2.5s ease';
@@ -260,7 +263,6 @@
         const card = document.getElementById('card');
         card.classList.add('visible');
 
-        // Textul apare treptat, mai lent și romantic
         const paragraphs = document.querySelectorAll('#card p');
         paragraphs.forEach((p, i) => {
           setTimeout(() => p.classList.add('visible'), i * 480 + 1000);
@@ -301,28 +303,30 @@
         final.classList.add('visible');
         noBtn.style.display = 'none';
 
-        // Explozia finala de inimi + ursuleti
         for(let i = 0; i < 80; i++) {
-          setTimeout(createFallingEmoji, i * 50);
+          setTimeout(createFallingItem, i * 50);
         }
       }, 1300);
     };
 
-    function createFallingEmoji() {
+    function createFallingItem() {
       const item = document.createElement('div');
       const isHeart = Math.random() > 0.35;
-      item.className = isHeart ? 'heart' : 'teddy-emoji';
+      item.className = 'falling-item';
       item.innerHTML = isHeart ? '💜' : '🐻';
       item.style.left = Math.random() * 100 + 'vw';
-      item.style.animationDuration = (Math.random() * 7 + 9) + 's'; // 9-16 sec pentru cădere lentă și drăguță
-      item.style.animationDelay = Math.random() * 4 + 's';
-      item.style.opacity = Math.random() * 0.35 + 0.25; // 0.25 - 0.6 pentru varietate și delicatețe
+      item.style.fontSize = (Math.random() * 1.2 + 1.8) + 'rem'; // 1.8–3rem variabil
+      item.style.--rotate-end = (Math.random() * 1440 - 720) + 'deg'; // rotație random mare
+      item.style.--drift = (Math.random() * 80 - 40) + 'vw'; // deviație stânga-dreapta
+      item.style.--item-opacity = (Math.random() * 0.4 + 0.25); // 0.25–0.65
+      item.style.animationDuration = (Math.random() * 8 + 8) + 's'; // 8–16 sec
+      item.style.animationDelay = Math.random() * 3 + 's';
       document.body.appendChild(item);
-      setTimeout(() => item.remove(), 18000);
+      setTimeout(() => item.remove(), 20000);
     }
 
-    // Inimi și ursuleți permanenți în fundal (mai multe variante, opacitate mică)
-    setInterval(createFallingEmoji, 450);
+    // Permanent în fundal – cad toți de sus până jos fără blocaje
+    setInterval(createFallingItem, 400);
   </script>
 </body>
 </html>
