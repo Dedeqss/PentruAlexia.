@@ -2,25 +2,24 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pentru Alexia 💜</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{
+html, body{
   min-height:100vh;
   font-family:'Caveat',cursive;
-  overflow:hidden;
   background:
     radial-gradient(circle at 20% 30%,rgba(216,180,254,.35),transparent 40%),
     radial-gradient(circle at 80% 70%,rgba(196,181,253,.35),transparent 40%),
     linear-gradient(135deg,#1e003b,#2b004f,#12002a);
   animation:bgMove 20s infinite alternate;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   color:#fff;
   text-align:center;
+  overflow-x:hidden;
+  overflow-y:auto; /* fix scroll */
+  padding:20px;
 }
 @keyframes bgMove{from{background-position:0% 0%}to{background-position:100% 100%}}
 
@@ -59,8 +58,9 @@ body{
 
 /* CARD */
 .card{
-  max-width:95%; max-height:85vh; overflow-y:auto;
-  margin:120px auto; background:rgba(20,0,40,.75);
+  max-width:95%; 
+  margin:0 auto;
+  background:rgba(20,0,40,.75);
   backdrop-filter:blur(18px); border-radius:30px; padding:40px 30px;
   box-shadow:0 0 120px rgba(216,180,254,.35);
   opacity:0; transform:translateY(60px) scale(.95);
@@ -140,7 +140,7 @@ const yes=document.getElementById("yes");
 const no=document.getElementById("no");
 const final=document.getElementById("final");
 
-// CONTINUOUS EMOJIS BEFORE DA
+// FLOW CONTINUOUS EMOJIS BEFORE DA
 setInterval(()=>{createFall(true)},400);
 
 env.onclick=()=>{
@@ -148,6 +148,8 @@ env.onclick=()=>{
   setTimeout(()=>{
     intro.style.display="none";
     card.classList.add("show");
+    // permit scroll pe body
+    document.body.style.overflowY="auto";
     ps.forEach((p,i)=>setTimeout(()=>p.classList.add("show"),i*400));
   },1000);
 };
