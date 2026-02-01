@@ -22,6 +22,8 @@
       padding:20px;
       text-align:center;
     }
+
+    /* INTRO WHEEL */
     .intro-screen {
       position:fixed;
       inset:0;
@@ -30,33 +32,33 @@
       justify-content:center;
       align-items:center;
       z-index:20;
-      transition:opacity 2s ease;
-      opacity:1;
+      transition:opacity 1.5s ease;
+      background:linear-gradient(135deg,#c084fc 0%,#9f7aea 30%,#7c3aed 70%,#4c1d95 100%);
     }
     .intro-screen.fade-out {
       opacity:0;
       pointer-events:none;
     }
-    .title-intro {
-      font-family:'Pinyon Script',cursive;
-      font-size:7rem;
-      color:#f3e8ff;
-      text-shadow:0 12px 35px rgba(124,58,237,0.95),0 0 70px rgba(167,139,250,0.7);
-      margin-bottom:40px;
-      animation:glowSoft 6s infinite alternate;
-      letter-spacing:3px;
+    .wheel {
+      font-size:10rem;
+      cursor:pointer;
+      animation: spin 4s linear infinite;
+      transition: transform 1.5s ease, opacity 1.5s ease;
     }
-    @keyframes glowSoft {
-      from { text-shadow:0 0 20px #c084fc,0 0 40px #a855f7; }
-      to   { text-shadow:0 0 40px #c084fc,0 0 80px #a855f7; }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    .subtitle-intro {
+    .intro-text {
+      margin-top:30px;
       font-family:'Parisienne',cursive;
-      font-size:3.2rem;
-      color:#e9d5ff;
-      opacity:0.92;
+      font-size:3rem;
+      opacity:0.9;
+      color:#f3e8ff;
       text-shadow:0 5px 15px rgba(124,58,237,0.7);
     }
+
+    /* CARD */
     .card {
       background:rgba(30,10,60,0.75);
       backdrop-filter:blur(16px);
@@ -187,38 +189,30 @@
       will-change:transform,opacity;
     }
     @keyframes smoothFall {
-      0% {
-        transform:translateY(-40vh) rotate(0deg) translateX(0);
-        opacity:0;
-      }
-      5% {
-        opacity:var(--item-opacity);
-      }
-      95% {
-        opacity:var(--item-opacity);
-      }
-      100% {
-        transform:translateY(140vh) rotate(var(--rotate-end)) translateX(var(--drift));
-        opacity:0;
-      }
+      0% { transform:translateY(-40vh) rotate(0deg) translateX(0); opacity:0; }
+      5% { opacity:var(--item-opacity); }
+      95% { opacity:var(--item-opacity); }
+      100% { transform:translateY(140vh) rotate(var(--rotate-end)) translateX(var(--drift)); opacity:0; }
     }
     @media (max-width:480px) {
-      .title-start { font-size:5rem; }
-      .subtitle-start { font-size:2.8rem; }
       .title { font-size:4.8rem; }
       .big   { font-size:4.2rem; }
       p      { font-size:1.3rem; }
       button { font-size:1.9rem; padding:16px 55px; }
+      .wheel { font-size:7rem; }
+      .intro-text { font-size:2.2rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- INTRO -->
   <div class="intro-screen" id="intro">
-    <div class="title-start">Pentru Alexia</div>
-    <div class="subtitle-start">💜 de la Florin 💜</div>
+    <div class="wheel" id="wheel">🛞</div>
+    <div class="intro-text">Apasă pe anvelopă</div>
   </div>
 
+  <!-- CARD -->
   <div class="card" id="card">
     <div class="title">Pentru Alexia 💜</div>
 
@@ -254,31 +248,30 @@
   </div>
 
   <script>
-    // Titlul intro apare imediat și stă 3 secunde
     const intro = document.getElementById('intro');
-    intro.style.opacity = '1';
-
-    // După 3 secunde începe fade-out lent
-    setTimeout(() => {
-      intro.style.opacity = '0';
-      setTimeout(() => {
-        intro.style.display = 'none'; // eliminăm complet după fade-out
-        const card = document.getElementById('card');
-        card.classList.add('visible');
-
-        // Textul tău apare treptat
-        const paragraphs = document.querySelectorAll('#card p');
-        paragraphs.forEach((p, i) => {
-          setTimeout(() => p.classList.add('visible'), i * 480 + 1200);
-        });
-      }, 2800); // timp fade-out
-    }, 3000);
-
-    let scale = 1;
-    const noBtn = document.getElementById('no');
+    const wheel = document.getElementById('wheel');
+    const card = document.getElementById('card');
     const yesBtn = document.getElementById('yes');
+    const noBtn = document.getElementById('no');
     const final = document.getElementById('final');
 
+    // CLICK pe anvelopă
+    wheel.addEventListener('click', () => {
+      intro.classList.add('fade-out');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        card.classList.add('visible');
+
+        // Apare textul treptat
+        const paragraphs = document.querySelectorAll('#card p');
+        paragraphs.forEach((p, i) => {
+          setTimeout(() => p.classList.add('visible'), i * 480);
+        });
+      }, 1500);
+    });
+
+    // BUTON NU
+    let scale = 1;
     noBtn.onclick = () => {
       scale += 0.35;
       yesBtn.style.transform = `scale(${scale})`;
@@ -289,6 +282,7 @@
       }
     };
 
+    // BUTON DA
     yesBtn.onclick = () => {
       document.querySelectorAll('#card > *:not(#final):not(.final-heart)').forEach(el => {
         el.style.transition = 'all 1.3s ease';
@@ -313,6 +307,7 @@
       }, 1300);
     };
 
+    // EMOJI CAZATORI
     function createFallingItem() {
       const item = document.createElement('div');
       const isHeart = Math.random() > 0.35;
@@ -320,9 +315,9 @@
       item.innerHTML = isHeart ? '💜' : '🐻';
       item.style.left = Math.random() * 100 + 'vw';
       item.style.fontSize = (Math.random() * 1.2 + 1.8) + 'rem';
-      item.style.--rotate-end = (Math.random() * 1440 - 720) + 'deg';
-      item.style.--drift = (Math.random() * 80 - 40) + 'vw';
-      item.style.--item-opacity = (Math.random() * 0.4 + 0.25);
+      item.style.setProperty('--rotate-end', (Math.random() * 1440 - 720) + 'deg');
+      item.style.setProperty('--drift', (Math.random() * 80 - 40) + 'vw');
+      item.style.setProperty('--item-opacity', (Math.random() * 0.4 + 0.25));
       item.style.animationDuration = (Math.random() * 8 + 8) + 's';
       item.style.animationDelay = Math.random() * 3 + 's';
       document.body.appendChild(item);
