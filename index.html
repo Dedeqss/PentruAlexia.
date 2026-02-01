@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pentru Alexia mea adorată 💜</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pentru Alexia ❤️</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,209 +15,273 @@
     }
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 40%, #4c1d95 100%);
+      background: linear-gradient(135deg, #c084fc 0%, #7c3aed 50%, #4c1d95 100%);
       font-family: 'Poppins', sans-serif;
       color: #fff;
       overflow-x: hidden;
       position: relative;
+      padding: 20px;
     }
-    .overlay {
+    .stars {
       position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.15) 0%, transparent 50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8Y2lyY2xlIGN4PSIyMCUiIGN5PSIyMCUiIHI9IjIiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iNjAlIiBjeT0iMTAlIiByPSIxIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42Ii8+CjxjaXJjbGUgY3g9IjQwJSIgY3k9IjgwJSIgcj0iMS41IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC43Ii8+CiA8Y2lyY2xlIGN4PSI4MCUiIGN5PSI1MCUiIHI9IjIiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz4KPGNpcmNsZSBjeD0iMTAlIiBjeT0iNzAlIiByPSIxIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC41Ii8+CiA8Y2lyY2xlIGN4PSI5MCUiIGN5PSIyMCUiIHI9IjEuNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNyIvPgo8Y2lyY2xlIGN4PSI1MCUiIGN5PSI2MCUiIHI9IjEiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz4KPC9zdmc+') repeat;
+      animation: twinkle 5s infinite alternate;
       pointer-events: none;
       z-index: 1;
     }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
     .card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background: rgba(30, 10, 60, 0.7);
+      backdrop-filter: blur(15px);
+      border-radius: 40px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
       position: relative;
-      max-width: 720px;
-      margin: 40px auto;
-      padding: 45px 35px;
-      background: rgba(30, 10, 60, 0.65);
-      backdrop-filter: blur(12px);
-      border-radius: 32px;
-      border: 1px solid rgba(167,139,250, 0.25);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-      text-align: center;
       z-index: 10;
-      animation: floatCard 7s ease-in-out infinite alternate;
+      overflow: hidden;
     }
-    @keyframes floatCard {
-      from { transform: translateY(0) scale(1); }
-      to   { transform: translateY(-15px) scale(1.015); }
-    }
-    h1 {
+    .title {
       font-family: 'Dancing Script', cursive;
-      font-size: 4.2rem;
-      color: #e0bbff;
-      margin-bottom: 10px;
-      text-shadow: 0 4px 15px rgba(124,58,237,0.6);
-    }
-    .subtitle {
-      font-size: 1.4rem;
-      color: #d1c4ff;
+      font-size: 4rem;
+      color: #f3e8ff;
+      text-shadow: 0 6px 12px rgba(124,58,237,0.8);
       margin-bottom: 30px;
-      font-weight: 300;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #c084fc, 0 0 20px #7c3aed; }
+      to { text-shadow: 0 0 20px #c084fc, 0 0 40px #7c3aed; }
     }
     p {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      margin: 18px 0;
+      font-size: 1.3rem;
+      line-height: 1.7;
+      margin: 15px 0;
       color: #e9d5ff;
-      opacity: 0.95;
-      animation: fadeInText 1.2s ease forwards;
-      animation-delay: calc(var(--order) * 0.4s);
       opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
     }
-    .big-question {
+    p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .big {
       font-family: 'Dancing Script', cursive;
       font-size: 3.5rem;
+      font-weight: bold;
       color: #f3e8ff;
-      margin: 45px 0 35px;
-      text-shadow: 0 5px 20px rgba(124,58,237,0.7);
-      animation: pulse 4s ease-in-out infinite;
+      margin: 40px 0;
+      text-shadow: 0 5px 15px rgba(124,58,237,0.7);
+      animation: pulse 2s infinite;
     }
     @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.06); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 60px;
-      margin: 50px 0 30px;
-      position: relative;
+      gap: 50px;
+      margin: 40px 0;
     }
     button {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      padding: 18px 60px;
+      font-size: 1.6rem;
+      padding: 15px 50px;
       border: none;
-      border-radius: 60px;
+      border-radius: 50px;
       cursor: pointer;
-      transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
     #yes {
-      background: linear-gradient(45deg, #c084fc, #a855f7);
+      background: linear-gradient(45deg, #d946ef, #a855f7);
       color: white;
     }
     #yes:hover {
-      transform: translateY(-8px) scale(1.12);
-      box-shadow: 0 20px 50px rgba(168,85,247,0.6);
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(168,85,247,0.7);
     }
     #no {
-      background: rgba(255,255,255,0.15);
-      color: #e0bbff;
-      border: 2px solid #c4b5fd;
+      background: rgba(255,255,255,0.2);
+      color: #e9d5ff;
     }
     #no:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-3px);
+      background: rgba(255,255,255,0.1);
     }
     #final {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.6rem;
+      font-size: 1.8rem;
       color: #f3e8ff;
-      margin-top: 40px;
-      line-height: 1.4;
+      margin-top: 30px;
       opacity: 0;
-      transition: opacity 1.2s ease;
+      transition: opacity 1s ease;
+      line-height: 1.6;
+    }
+    #final.visible {
+      opacity: 1;
+    }
+    .teddy {
+      position: absolute;
+      z-index: 5;
+      animation: bounce 3s infinite alternate;
+      width: 150px;
+    }
+    .teddy1 {
+      top: 10%;
+      left: -100px;
+      animation-delay: 0s;
+    }
+    .teddy2 {
+      bottom: 15%;
+      right: -100px;
+      animation-delay: 1s;
+    }
+    .teddy3 {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      opacity: 0.8;
+      animation: rotate 10s linear infinite;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-20px); }
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     .heart {
       position: fixed;
-      color: #d1c4ff;
-      font-size: 1.8rem;
-      pointer-events: none;
-      user-select: none;
-      animation: fall linear infinite;
-      z-index: 5;
-      text-shadow: 0 0 10px rgba(167,139,250,0.8);
+      font-size: 2rem;
+      color: #d946ef;
+      animation: floatHeart 8s linear infinite;
+      z-index: 2;
     }
-    @keyframes fall {
-      0%   { transform: translateY(-10vh) rotate(0deg); opacity: 0.9; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
-    @keyframes fadeInText {
-      to { opacity: 1; transform: translateY(0); }
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #d946ef;
+      animation: confettiFall 5s linear infinite;
+      z-index: 3;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
 
-<div class="overlay"></div>
+  <img class="teddy teddy1" src="https://i.ytimg.com/vi/rtRVvjKnzKo/maxresdefault.jpg" alt="Ursuleț mov">
+  <img class="teddy teddy2" src="https://previews.123rf.com/images/pixander/pixander2308/pixander230808798/210828096-two-teddy-bears-in-the-snow-with-hearts-valentines-day-background.jpg" alt="Ursuleți cu inimi mov">
+  <img class="teddy teddy3" src="https://w0.peakpx.com/wallpaper/431/628/HD-wallpaper-cute-bear-hugs-pretty-lovely-love-four-seasons-bear-adorable-attractions-in-dreams-most-ed-abstract-i-miss-you-cute-teddy-bears-fantasy-bear-lovers-hugs-love-beloved-valentines.jpg" alt="Ursuleți îmbrățișați">
 
-<div class="card">
-  <h1>Pentru Alexia mea ❤️</h1>
-  <div class="subtitle">de la Florin</div>
+  <div class="card">
+    <h1 class="title">Pentru Alexia ❤️</h1>
 
-  <p style="--order:1">Helo draga mea Alexia 💜</p>
-  <p style="--order:2">Sunt eu Florin și ți-am făcut acest loc special doar pentru tine...</p>
-  <p style="--order:3">În ultima perioadă de când vorbim tu îmi faci viața mult mai frumoasă în fiecare zi.</p>
-  <p style="--order:4">Parcă totul devine mai luminos doar știind că seara stau cu tine la telefon.</p>
-  <p style="--order:5">Îți mulțumesc enorm că mă asculți, că stai cu mine, că simt că îți pasă cu adevărat.</p>
-  <p style="--order:6">Și eu țin extrem de mult la tine și ascult fiecare poveste a ta cu cel mai mare entuziasm.</p>
-  <p style="--order:7">Mă faci atât de fericit încât nici nu știu cum să-ți explic...</p>
-  <p style="--order:8">Doar prezența ta îmi schimbă complet starea, indiferent despre ce vorbim.</p>
+    <p>Helo draga mea Alexia</p>
+    <p>Sunt eu Florin si am facut acest site special pentru tine</p>
+    <p>Voiam sa iti spun ca in ultima perioada de cand am inceput sa vorbim chiar chiar chiar imi faci viata mai buna zilnic</p>
+    <p>Parca doar cand stiu ca stau seara cu tine in apel totul devine mult mai frumos</p>
+    <p>Apreciez enorm ca stai cu mine in fiecare seara imi asculti problemele si simt ca chiar iti pasa</p>
+    <p>Eu tin extrem de mult la tine si de fiecare data iti ascult povestile tale cu cel mai mare entuziasm posibil</p>
+    <p>Sunt atat de fericit cand te ascult incat nici nu pot explica</p>
+    <p>Mereu imi faci seara mai frumoasa si nu conteaza despre ce vorbim sau ce facem</p>
+    <p>Doar faptul ca esti acolo cu mine imi schimba complet starea</p>
+    <p>Stiu ca esti intr o situatie ciudata cu Strambu si te gandesti si la Armyn</p>
+    <p>Dar sincer parca in ultima perioada am vazut cat de draguta esti cu mine si cu toata lumea</p>
+    <p>As vrea sa ne apropiem cat mai mult daca iti doresti si tu</p>
+    <p>De aceea vreau sa iti adresez o intrebare extrem de importanta pentru mine</p>
+    <p>Daca nu vrei este complet ok te inteleg perfect si nu voi fi trist</p>
+    <p>Din ce mi ai spus pe 14 februarie nu ai nimic planificat</p>
+    <p>Asa ca voiam sa te intreb daca ai vrea sa petrecem ziua aceea impreuna</p>
+    <p>Sa facem lucruri dragute poate sa iesim prin mall sau oriunde ne simtim bine</p>
+    <p>Cel mai important pentru mine este daca TU iti doresti</p>
+    <p>Iti multumesc enorm ca ai fost langa mine si ca ai insemnat atat de mult pentru mine</p>
 
-  <p style="--order:9" class="big-question">Vrei să fii Valentina mea? 💜</p>
+    <div class="big">Vrei sa fii valentina mea</div>
 
-  <div class="buttons">
-    <button id="yes" onclick="yesClick()">DA 💜</button>
-    <button id="no" onclick="noClick()">NU</button>
+    <div class="buttons">
+      <button id="yes">DA</button>
+      <button id="no">NU</button>
+    </div>
+
+    <div id="final"></div>
   </div>
 
-  <div id="final"></div>
-</div>
+  <script>
+    // Reveal text on scroll
+    const paragraphs = document.querySelectorAll('p');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-<script>
-let scale = 1;
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const finalMsg = document.getElementById("final");
+    paragraphs.forEach(p => observer.observe(p));
 
-function noClick() {
-  scale += 0.28;
-  yesBtn.style.transform = `scale(${scale})`;
-  noBtn.style.transform = `scale(${1 / (scale * 0.8)})`;
-  if (scale > 2.8) {
-    noBtn.style.opacity = "0";
-    noBtn.style.pointerEvents = "none";
-  }
-}
+    // Hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '💜';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 300);
 
-function yesClick() {
-  finalMsg.innerHTML = 
-    `Dacă ai zis DA... probabil m-ai făcut cel mai fericit băiat din univers în seara asta 💜<br><br>` +
-    `Îți promit din suflet să nu te dezamăgesc niciodată.<br>` +
-    `Știu că poate nu sunt genul tău clasic, dar cred că oricine merită măcar o șansă, nu?<br><br>` +
-    `Te pup enorm și abia aștept să te țin în brațe. 🌙💜`;
-  finalMsg.style.opacity = "1";
-  yesBtn.disabled = true;
-  noBtn.style.display = "none";
-  createExtraHearts(30);
-}
+    // Confetti on yes
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.background = ['#d946ef', '#a855f7', '#c084fc'][Math.floor(Math.random() * 3)];
+      confetti.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = Math.random() > 0.3 ? "💜" : "✨";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 2.2 + 1.2) + "rem";
-  heart.style.animationDuration = (Math.random() * 8 + 9) + "s";
-  heart.style.animationDelay = Math.random() * 3 + "s";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 15000);
-}
+    let scale = 1;
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const final = document.getElementById('final');
 
-function createExtraHearts(count) {
-  for(let i = 0; i < count; i++) {
-    setTimeout(createHeart, i * 80);
-  }
-}
+    noBtn.onclick = () => {
+      scale += 0.3;
+      yesBtn.style.transform = `scale(${scale})`;
+      noBtn.style.transform = `scale(${1 / scale})`;
+      if (scale > 2.5) {
+        noBtn.style.display = 'none';
+      }
+    };
 
-setInterval(createHeart, 600);
-</script>
+    yesBtn.onclick = () => {
+      final.innerHTML = 'Daca chiar ai ales da vreau sa iti spun ca probabil m ai facut cel mai fericit baiat din univers si din lumea asta<br><br>Promit sa nu te dezamagesc<br><br>Stiu ca poate nu sunt tipul tau dar cred ca oricine merita macar o sansa nu<br><br>❤️';
+      final.classList.add('visible');
+      noBtn.style.display = 'none';
+      setInterval(createConfetti, 100);
+    };
+  </script>
 </body>
 </html>
