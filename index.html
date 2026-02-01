@@ -1,71 +1,181 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <title>Pentru Alexia ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      max-width: 500px;
-    }
-    h1 {
-      color: #e91e63;
-    }
-    button {
-      margin: 15px;
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-    }
-    .yes {
-      background: #e91e63;
-      color: white;
-    }
-    .no {
-      background: #ccc;
-      position: absolute;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentru Alexia ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.card {
+  background: white;
+  max-width: 700px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: fadeIn 1.5s ease;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.big {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  font-size: 22px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+#yes {
+  background: #e91e63;
+  color: white;
+}
+
+#no {
+  background: #ccc;
+  position: absolute;
+  right: 0;
+}
+
+#final {
+  font-size: 22px;
+  margin-top: 25px;
+  color: #e91e63;
+  animation: fadeIn 1s ease;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes float {
+  from {transform: translateY(0);}
+  to {transform: translateY(-120vh);}
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Alexia ❤️</h1>
-    <p>
-      De când ești în viața mea, totul e mai frumos.<br>
-      Zâmbetul tău e locul meu preferat.
-    </p>
-    <h2>Vrei să fii soția mea? 💍</h2>
-    <button class="yes" onclick="accept()">DA</button>
-    <button class="no" id="no">Nu</button>
-    <p id="msg"></p>
-  </div>
 
-  <script>
-    function accept() {
-      document.getElementById("msg").innerHTML =
-        "💖 Știam! Te iubesc pentru totdeauna 💖";
-    }
+<div class="card">
 
-    const noBtn = document.getElementById("no");
-    noBtn.addEventListener("mouseover", () => {
-      noBtn.style.left = Math.random() * 80 + "%";
-      noBtn.style.top = Math.random() * 80 + "%";
-    });
-  </script>
+<p>Helo draga mea Alexia</p>
+
+<p>Sunt eu Florin si am facut acest site special pentru tine</p>
+
+<p>Voiam sa iti spun ca in ultima perioada de cand am inceput sa vorbim chiar chiar chiar imi faci viata mai buna zilnic</p>
+
+<p>Parca doar cand stiu ca stau seara cu tine in apel totul devine mult mai frumos</p>
+
+<p>Apreciez enorm ca stai cu mine in fiecare seara imi asculti problemele si simt ca chiar iti pasa</p>
+
+<p>Eu tin extrem de mult la tine si de fiecare data iti ascult povestile tale cu cel mai mare entuziasm posibil</p>
+
+<p>Sunt atat de fericit cand te ascult incat nici nu pot explica</p>
+
+<p>Mereu imi faci seara mai frumoasa si nu conteaza despre ce vorbim sau ce facem</p>
+
+<p>Doar faptul ca esti acolo cu mine imi schimba complet starea</p>
+
+<p>Stiu ca esti intr o situatie ciudata cu Strambu si te gandesti si la Armyn</p>
+
+<p>Dar sincer parca in ultima perioada am vazut cat de draguta esti cu mine si cu toata lumea</p>
+
+<p>As vrea sa ne apropiem cat mai mult daca iti doresti si tu</p>
+
+<p>De aceea vreau sa iti adresez o intrebare extrem de importanta pentru mine</p>
+
+<p>Daca nu vrei este complet ok te inteleg perfect si nu voi fi trist</p>
+
+<p>Din ce mi ai spus pe 14 februarie nu ai nimic planificat</p>
+
+<p>Asa ca voiam sa te intreb daca ai vrea sa petrecem ziua aceea impreuna</p>
+
+<p>Sa facem lucruri dragute poate sa iesim prin mall sau oriunde ne simtim bine</p>
+
+<p>Cel mai important pentru mine este daca TU iti doresti</p>
+
+<p>Iti multumesc enorm ca ai fost langa mine si ca ai insemnat atat de mult pentru mine</p>
+
+<div class="big">Vrei sa fii valentina mea</div>
+
+<div class="buttons">
+  <button id="yes" onclick="yesClick()">DA</button>
+  <button id="no" onclick="noClick()">NU</button>
+</div>
+
+<div id="final"></div>
+
+</div>
+
+<script>
+let scale = 1;
+
+function noClick() {
+  scale += 0.25;
+  document.getElementById("yes").style.transform = `scale(${scale})`;
+  document.getElementById("no").style.transform = "scale(0.7)";
+  if (scale >= 2.2) {
+    document.getElementById("no").style.display = "none";
+  }
+}
+
+function yesClick() {
+  document.getElementById("final").innerHTML =
+  "Daca chiar ai ales da vreau sa iti spun ca probabil m ai facut cel mai fericit baiat din univers si din lumea asta<br><br>Promit sa nu te dezamagesc<br><br>Stiu ca poate nu sunt tipul tau dar cred ca oricine merita macar o sansa nu<br><br>❤️";
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
 </body>
 </html>
