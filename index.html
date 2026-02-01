@@ -6,7 +6,7 @@
   <title>Pentru Alexia mea adorată 💜</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Pinyon+Script&family=Caveat:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Pinyon+Script&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -23,14 +23,23 @@
       text-align:center;
     }
     .start-screen {
-      position:relative;
-      z-index:10;
-      animation:fadeInTitle 3.5s ease-out forwards;
+      position:fixed;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      z-index:20;
+      background:rgba(76,29,149,0.15);
+      backdrop-filter:blur(8px);
+      transition:opacity 3s ease, visibility 0s 3s;
       opacity:0;
+      visibility:hidden;
     }
-    @keyframes fadeInTitle {
-      0% { opacity:0; transform:translateY(60px) scale(0.92); }
-      100% { opacity:1; transform:translateY(0) scale(1); }
+    .start-screen.visible {
+      opacity:1;
+      visibility:visible;
+      transition:opacity 3.5s ease-out, visibility 0s;
     }
     .title-start {
       font-family:'Pinyon Script',cursive;
@@ -49,7 +58,6 @@
       font-family:'Parisienne',cursive;
       font-size:3.5rem;
       color:#e9d5ff;
-      margin:40px 0 80px;
       opacity:0.94;
       text-shadow:0 6px 18px rgba(124,58,237,0.8);
     }
@@ -67,6 +75,7 @@
       transition:all 1.6s cubic-bezier(0.34,1.56,0.64,1);
       box-shadow:0 40px 90px rgba(0,0,0,0.6);
       border:1px solid rgba(167,139,250,0.4);
+      z-index:5;
     }
     .card.visible {
       opacity:1;
@@ -204,13 +213,13 @@
       .title { font-size:4.8rem; }
       .big   { font-size:4.2rem; }
       p      { font-size:1.3rem; }
-      button { font-size:1.9rem; padding:18px 60px; }
+      button { font-size:1.9rem; padding:16px 55px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="start-screen">
+  <div class="start-screen" id="startScreen">
     <div class="title-start">Pentru Alexia</div>
     <div class="subtitle-start">💜 de la Florin 💜</div>
   </div>
@@ -250,21 +259,24 @@
   </div>
 
   <script>
-    // Titlul intro apare singur 2.5 secunde, apoi dispare și începe cardul + textul tău
+    // Pornim cu start-screen vizibil
+    document.getElementById('startScreen').classList.add('visible');
+
+    // După 3 secunde începe fade-out-ul titlului intro
     setTimeout(() => {
-      document.querySelector('.start-screen').style.opacity = '0';
-      document.querySelector('.start-screen').style.transition = 'opacity 2.8s ease';
+      document.getElementById('startScreen').style.opacity = '0';
       setTimeout(() => {
-        document.querySelector('.start-screen').style.display = 'none';
+        document.getElementById('startScreen').classList.remove('visible');
         const card = document.getElementById('card');
         card.classList.add('visible');
 
+        // Textul tău apare treptat
         const paragraphs = document.querySelectorAll('#card p');
         paragraphs.forEach((p, i) => {
           setTimeout(() => p.classList.add('visible'), i * 480 + 1200);
         });
-      }, 2500);
-    }, 2500);
+      }, 2800); // timp fade-out
+    }, 3000); // timp cât stă titlul vizibil
 
     let scale = 1;
     const noBtn = document.getElementById('no');
@@ -321,7 +333,6 @@
       setTimeout(() => item.remove(), 20000);
     }
 
-    // Permanent în fundal – cad toți de sus până jos
     setInterval(createFallingItem, 400);
   </script>
 </body>
