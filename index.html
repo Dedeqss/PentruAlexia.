@@ -23,7 +23,7 @@
       text-align:center;
     }
 
-    /* INTRO WHEEL */
+    /* INTRO PLIC */
     .intro-screen {
       position:fixed;
       inset:0;
@@ -39,15 +39,19 @@
       opacity:0;
       pointer-events:none;
     }
-    .wheel {
+    .envelope {
       font-size:10rem;
       cursor:pointer;
-      animation: spin 4s linear infinite;
-      transition: transform 1.5s ease, opacity 1.5s ease;
+      transition: transform 1.2s ease, opacity 1.2s ease;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      user-select:none;
     }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .envelope.open {
+      transform: scale(6) rotateX(180deg);
+      opacity:0;
     }
     .intro-text {
       margin-top:30px;
@@ -199,7 +203,7 @@
       .big   { font-size:4.2rem; }
       p      { font-size:1.3rem; }
       button { font-size:1.9rem; padding:16px 55px; }
-      .wheel { font-size:7rem; }
+      .envelope { font-size:7rem; }
       .intro-text { font-size:2.2rem; }
     }
   </style>
@@ -208,8 +212,8 @@
 
   <!-- INTRO -->
   <div class="intro-screen" id="intro">
-    <div class="wheel" id="wheel">🛞</div>
-    <div class="intro-text">Apasă pe anvelopă</div>
+    <div class="envelope" id="envelope">📩</div>
+    <div class="intro-text">Apasă pe plic</div>
   </div>
 
   <!-- CARD -->
@@ -249,25 +253,22 @@
 
   <script>
     const intro = document.getElementById('intro');
-    const wheel = document.getElementById('wheel');
+    const envelope = document.getElementById('envelope');
     const card = document.getElementById('card');
     const yesBtn = document.getElementById('yes');
     const noBtn = document.getElementById('no');
     const final = document.getElementById('final');
 
-    // CLICK pe anvelopă
-    wheel.addEventListener('click', () => {
+    // CLICK pe plic
+    envelope.addEventListener('click', () => {
+      envelope.classList.add('open');
       intro.classList.add('fade-out');
       setTimeout(() => {
         intro.style.display = 'none';
         card.classList.add('visible');
-
-        // Apare textul treptat
         const paragraphs = document.querySelectorAll('#card p');
-        paragraphs.forEach((p, i) => {
-          setTimeout(() => p.classList.add('visible'), i * 480);
-        });
-      }, 1500);
+        paragraphs.forEach((p, i) => setTimeout(() => p.classList.add('visible'), i * 480));
+      }, 1200);
     });
 
     // BUTON NU
@@ -323,7 +324,6 @@
       document.body.appendChild(item);
       setTimeout(() => item.remove(), 20000);
     }
-
     setInterval(createFallingItem, 400);
   </script>
 </body>
